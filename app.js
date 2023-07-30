@@ -2,6 +2,21 @@
 const input= document.querySelector('input');
 const buttons=document.querySelectorAll('button');
 const click= new Audio('click-button.mp3');
+var elem = document.querySelector('body');
+
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { 
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { 
+    elem.msRequestFullscreen();
+  }
+}
+
+document.addEventListener('dblclick',()=>{
+    openFullscreen();
+})
 
 
 let arr=[];
@@ -30,7 +45,7 @@ for(let button of buttons){
             }
         }
         else{
-            let currIndex=arr.indexOf(`${button_value}`)
+            let currIndex=arr.lastIndexOf(`${button_value}`)
             if(arr[currIndex-1]!=='='){
                 input.value+=button_value;
             }
